@@ -1,0 +1,6 @@
+name: Windows Explorer
+reg: explorer
+icon: icon.png
+opens:
+keywords:
+    - file

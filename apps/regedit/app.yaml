@@ -1,0 +1,7 @@
+name: Registry Editor
+reg: regedit
+opens:
+    - text/plain
+keywords:
+    - regedit
+    - registry

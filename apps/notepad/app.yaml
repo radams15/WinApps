@@ -1,0 +1,7 @@
+name: Notepad
+reg: notepad
+opens:
+    - text/plain
+keywords:
+    - notepad
+    - text

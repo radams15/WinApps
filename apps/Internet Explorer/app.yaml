@@ -1,0 +1,8 @@
+name: Internet Explorer
+reg: iexplore
+icon: logo.svg
+opens:
+keywords:
+    - ie
+    - web
+    - browser
