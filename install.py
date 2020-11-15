@@ -2,10 +2,6 @@ from apps import Apps
 from os.path import join
 from os import system
 
-USERNAME = "rhys"
-PASSWORD = "winpass"
-IP = "192.168.122.33"
-
 APP_FOLDER = "/home/rhys/.local/share/applications/"
 
 def get_reg(name, reg):
@@ -18,7 +14,7 @@ apps = Apps()
 apps.load("apps")
 
 for app in apps.apps:
-    desktop = app.get_desktop(USERNAME, PASSWORD, IP)
+    desktop = app.get_desktop()
     file = join(APP_FOLDER, "{}_Win.desktop".format(app.name.replace(" ", "_").replace(".", "_")))
     
     with open(file, "w") as f:

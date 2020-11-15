@@ -35,12 +35,17 @@ class App:
         return App(d["name"], d["reg"], icon, d["opens"], d["keywords"])
         
     def get_desktop(self):
-        command = "{} {}".format(join(getcwd(), "Run.py"), self.name)
+        command = "/bin/sh -c \"cd {} && python3 {} '{}' --file '%f' \"".format(getcwd(), "Run.py", self.name)
         return DESKTOP_TEMPLATE.format(self.display_name, command, self.icon)
         
         
     def __repr__(self):
         return "{} ({})".format(self.name, self.reg)
         
-    def get_command(self, username, password, ip):
-        return 'xfreerdp /u:"{}" /p:"{}" /v:"{}" /wm-class:"{}" /app:"{}" /span /dynamic-resolution +auto-reconnect +home-drive -wallpaper /sec:rdp /app-icon:"{}"'.format(username, password, ip, self.display_name, self.reg, self.icon)
+    def get_command(self, username, password, ip, args=None):
+        if args:
+            app_args = '/app-cmd:"{}"'.format(" ".join(args))
+        else:
+            app_args = ""
+        
+        return 'xfreerdp /u:"{}" /p:"{}" /v:"{}" /wm-class:"{}" /app:"{}" /span /dynamic-resolution +auto-reconnect +home-drive -wallpaper /sec:rdp /app-icon:"{}" {}'.format(username, password, ip, self.display_name, self.reg, self.icon, app_args)
